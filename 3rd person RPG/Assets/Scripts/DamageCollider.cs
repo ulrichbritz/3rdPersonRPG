@@ -30,7 +30,7 @@ public class DamageCollider : MonoBehaviour
     {
         if(other.tag == "Hittable" || other.tag == "Player" || other.tag == "Enemy")
         {
-            CharacterStats characterStats = other.GetComponentInParent<CharacterStats>();
+            CharacterStats characterStats = other.GetComponent<CharacterStats>();
 
             if(characterStats != null)
             {

@@ -62,6 +62,9 @@ public class PlayerInventory : MonoBehaviour
                 rightWeapon = newWeaponItem;
                 weaponsInRightHandSlots[0] = rightWeapon;
                 weaponSlotManager.LoadWeaponOnSlot(rightWeapon, true, true);
+                leftWeapon = unarmedWeapon;
+                weaponsInLeftHandSlots[0] = leftWeapon;
+                weaponSlotManager.LoadWeaponOnSlot(leftWeapon, false);
             }
             else if (newWeaponItem.isTwoHanded)
             {
@@ -69,6 +72,7 @@ public class PlayerInventory : MonoBehaviour
                 weaponsInRightHandSlots[0] = rightWeapon;
 
                 weaponSlotManager.LoadWeaponOnSlot(rightWeapon, false, true);
+                weaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);
             }
             else if (newWeaponItem.isDuelWield)
             {

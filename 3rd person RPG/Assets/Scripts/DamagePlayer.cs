@@ -8,7 +8,7 @@ public class DamagePlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        CharacterStats characterStats = other.GetComponentInParent<CharacterStats>();
+        CharacterStats characterStats = other.GetComponent<CharacterStats>();
 
         if (characterStats != null)
         {
