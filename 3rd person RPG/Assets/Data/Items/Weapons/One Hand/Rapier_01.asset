@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7a537c219542c4585c130d35bc1a81, type: 3}
+  m_Name: Rapier_01
+  m_EditorClassIdentifier: 
+  isDefaultItem: 0
+  itemIcon: {fileID: 21300000, guid: 8b43661052f7c594dbaea52ce5b53bad, type: 3}
+  itemName: Rapier_01
+  equipSlotPiece: 6
+  armorModifier: 0
+  modelPrefab: {fileID: 1387952804649551052, guid: 88e321501fd5f4644812c3d6b2732d98,
+    type: 3}
+  isUnarmed: 0
+  right_Hand_Idle: Right_Arm_Idle_01
+  left_Hand_Idle: Left_Arm_Idle_01
+  OH_Light_Attack_01: OH_Light_Attack_01
+  OH_Light_Attack_02: OH_Light_Attack_02
+  OH_Heavy_Attack_01: OH_Heavy_Attack_01
+  baseStaminaCost: 15
+  lightAttackStaminaMultiplier: 1
+  heavyAttackStaminaMultiplier: 2
