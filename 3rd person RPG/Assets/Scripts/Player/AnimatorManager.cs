@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorManager : MonoBehaviour
+public class AnimatorManager : CharacterAnimationManager
 {
-    public Animator anim;
     PlayerManager playerManager;
     PlayerLocomotion playerLocomotion;
     InputManager inputManager;
@@ -12,9 +11,10 @@ public class AnimatorManager : MonoBehaviour
     int horizontal;
     int vertical;
 
-    private void Awake()
+    public override void Awake()
     {
-        anim = GetComponent<Animator>();
+        base.Awake();
+
         playerManager = GetComponentInParent<PlayerManager>();
         playerLocomotion = GetComponentInParent<PlayerLocomotion>();
         inputManager = GetComponentInParent<InputManager>();
@@ -22,12 +22,6 @@ public class AnimatorManager : MonoBehaviour
         vertical = Animator.StringToHash("Vertical");
     }
 
-    public void PlayTargetAnimation(string targetAnimation, bool isInteracting, bool useRootMotion = false)
-    {
-        anim.SetBool("isInteracting", isInteracting);
-        anim.SetBool("isUsingRootMotion", useRootMotion);
-        anim.CrossFade(targetAnimation, 0.2f);
-    }
 
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
     {

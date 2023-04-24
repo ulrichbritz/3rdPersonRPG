@@ -1174,7 +1174,7 @@ GameObject:
   - component: {fileID: 4814790939753603404}
   - component: {fileID: 4814790939753603405}
   - component: {fileID: 4814790939753603413}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,9 +1273,14 @@ MonoBehaviour:
   interactInput: 0
   inventoryInput: 0
   equipmentInput: 0
+  lockOnInput: 0
+  leftLockOn: 0
+  rightLockOn: 0
   comboFlag: 0
   inventoryFlag: 0
   equipmentFlag: 0
+  lockOnFlag: 0
+  maxJumpCoolDown: 1
 --- !u!114 &4814790939753603403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,6 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2bbd5c04b78994a8727a4cd4306bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   Strength: 10

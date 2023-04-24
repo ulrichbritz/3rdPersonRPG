@@ -46,8 +46,6 @@ public class CameraManager : MonoBehaviour
 
     public float lookAngle; //look up and down
     public float pivotAngle; //left and right
-    [SerializeField] float minPivotAngle = 10f;
-    [SerializeField] float maxPivotAngle = 35f;
 
 
     public CharacterManager currentLockOnTarget;
