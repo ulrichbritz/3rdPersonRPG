@@ -38,6 +38,10 @@ public class EnemyManager : CharacterManager
 
     private void HandleCurrentAction()
     {
+        if(enemyLocomotionManager.currentTarget != null)
+        {
+            enemyLocomotionManager.distanceFromTarget = Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
+        }      
         if(enemyLocomotionManager.currentTarget == null)
         {
             enemyLocomotionManager.HandleDetection();
@@ -48,7 +52,7 @@ public class EnemyManager : CharacterManager
         }
         else if (enemyLocomotionManager.distanceFromTarget <= enemyLocomotionManager.stoppingDistance)
         {
-            //handle attacks
+            AttackTarget();
         }
 
     }
@@ -84,6 +88,7 @@ public class EnemyManager : CharacterManager
             isPerformingAction = true;
             currentRecoveryTime = currentAttack.recoveryTime;
             enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            currentAttack = null;
         }
     }
 
