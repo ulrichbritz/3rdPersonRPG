@@ -4,26 +4,72 @@ using UnityEngine;
 
 public class EnemyWeaponSlotManager : MonoBehaviour
 {
+    public WeaponItem rightHandWeapon;
+    public WeaponItem leftHandWeapon;
+
     WeaponHolderSlot rightHandSlot;
     WeaponHolderSlot leftHandSlot;
 
     DamageCollider leftHandDamageCollider;
     DamageCollider rightHandDamageCollider;
 
+    [SerializeField] WeaponItem unarmed;
+
+    private void Awake()
+    {
+        WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
+        foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
+        {
+            if (weaponSlot.isLeftHandSlot)
+            {
+                leftHandSlot = weaponSlot;
+            }
+            else if (weaponSlot.isRightHandSlot)
+            {
+                rightHandSlot = weaponSlot;
+            }
+        }
+    }
+
+    private void Start()
+    {
+        LoadWeaponsOnBothHands();
+    }
+
     public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
     {
         if (isLeft)
         {
-            leftHandSlot.currentWeapon = weapon;
-            leftHandSlot.LoadWeaponModel(weapon);
+            leftHandWeapon = weapon;
+            leftHandSlot.LoadWeaponModel(leftHandWeapon);
             LoadWeaponsDamageCollider(true);
         }
         else
         {
-            rightHandSlot.currentWeapon = weapon;
-            rightHandSlot.LoadWeaponModel(weapon);
-            LoadWeaponsDamageCollider(true);
-            //load wepaon damage collider
+            rightHandWeapon = weapon;
+            rightHandSlot.LoadWeaponModel(rightHandWeapon);
+            LoadWeaponsDamageCollider(false);
+        }
+    }
+
+    public void LoadWeaponsOnBothHands()
+    {
+        if (rightHandWeapon != null)
+        {
+            LoadWeaponOnSlot(rightHandWeapon, false);
+        }
+        else
+        {
+            LoadWeaponOnSlot(unarmed, false);
+        }
+
+        if (leftHandWeapon != null)
+        {
+            LoadWeaponOnSlot(leftHandWeapon, true);
+        }
+        else
+        {
+            LoadWeaponOnSlot(unarmed, true);
         }
     }
 
@@ -41,11 +87,11 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     public void OpenDamageCollider()
     {
-
+        rightHandDamageCollider.EnableDamageCollider();
     }
 
     public void CloseDamageCollider()
     {
-
+        rightHandDamageCollider.DisableDamageCollider();
     }
 }

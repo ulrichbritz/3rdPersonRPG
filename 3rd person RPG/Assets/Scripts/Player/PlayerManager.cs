@@ -33,10 +33,11 @@ public class PlayerManager : CharacterManager
 
     private void Update()
     {
+        isUsingRightHand = anim.GetBool("isUsingRightHand");
+        isUsingLeftHand = anim.GetBool("isUsingLeftHand");
+
         inputManager.HandleAllInputs();
         CheckForInteractable();
-
-        
     }
 
     private void FixedUpdate()

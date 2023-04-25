@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponSlotManager : MonoBehaviour
 {
+    PlayerManager playerManager;
     CharacterStats characterStats;
 
     WeaponHolderSlot leftHandSlot;
@@ -18,6 +19,7 @@ public class WeaponSlotManager : MonoBehaviour
 
     private void Awake()
     {
+        playerManager = GetComponentInParent<PlayerManager>();
         characterStats = GetComponentInParent<CharacterStats>();
         animator = GetComponent<Animator>();
 
@@ -96,14 +98,24 @@ public class WeaponSlotManager : MonoBehaviour
         rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
     }
 
-    public void OpenDamageCollider()
+    public void OpenLeftHandDamageCollider()
     {
         leftHandDamageCollider.EnableDamageCollider();
     }
 
-    public void CloseDamageCollider()
+    public void OpenRightHandDamageCollider()
+    {
+        rightHandDamageCollider.EnableDamageCollider();
+    }
+
+    public void CloseLeftHandDamageCollider()
     {
         leftHandDamageCollider.DisableDamageCollider();
+    }
+
+    public void CloseRightHandDamageCollider()
+    {
+        rightHandDamageCollider.DisableDamageCollider();
     }
 
     #endregion

@@ -13,6 +13,12 @@ public class ResetBool : StateMachineBehaviour
     public string canDoComboBool;
     public bool canDoComboStatus;
 
+    public string isUsingRightHandBool;
+    public bool isUsingRightHandStatus;
+
+    public string isUsingLeftHandBool;
+    public bool isUsingLeftHandStatus;
+
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -20,6 +26,8 @@ public class ResetBool : StateMachineBehaviour
         animator.SetBool(isInteractingBool, isInteractingStatus);
         animator.SetBool(isUsingRootMotionBool, isUsingRootMotionStatus);
         animator.SetBool(canDoComboBool, canDoComboStatus);
+        animator.SetBool(isUsingRightHandBool, isUsingRightHandStatus);
+        animator.SetBool(isUsingLeftHandBool, isUsingLeftHandStatus);
     }
 
     

@@ -14,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - 
   - 
   - Environment
   - Interactable
   - Character
   - Character Collider Blocker
-  - 
+  - Player
   - 
   - 
   - 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.0352, g: 2263.8008, b: 3286.5234, a: 1}
+  m_IndirectSpecularColor: {r: 2160.8467, g: 2265.0957, b: 3288.4062, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1527,6 +1527,12 @@ MonoBehaviour:
   leftLockTarget: {fileID: 0}
   rightLockTarget: {fileID: 0}
   maxLockOnDistance: 30
+--- !u!136 &244752345 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 6001863820543677699, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
+    type: 3}
+  m_PrefabInstance: {fileID: 4814790940615734727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &263964392
 GameObject:
   m_ObjectHideFlags: 0
@@ -8921,6 +8927,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7085974778345411273, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
+        type: 3}
+      propertyPath: isSleeping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8807203666985177633, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
         type: 3}
       propertyPath: detectionLayer.m_Bits
@@ -9144,6 +9155,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 515734670833254595, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
+        type: 3}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2030903746696530091, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
         type: 3}
       propertyPath: m_RootOrder
@@ -9207,7 +9223,7 @@ PrefabInstance:
     - target: {fileID: 2030903746696530095, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2030903748176959837, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
         type: 3}
@@ -9228,6 +9244,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3134501868891954189, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4814790939753603401, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
         type: 3}
       propertyPath: lockOnTransform
@@ -9263,6 +9284,16 @@ PrefabInstance:
       propertyPath: gravityIntensity
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 4814790939753603403, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
+        type: 3}
+      propertyPath: characterCollider
+      value: 
+      objectReference: {fileID: 4814790940615734737}
+    - target: {fileID: 4814790939753603403, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
+        type: 3}
+      propertyPath: characterCollisionBlockerCollider
+      value: 
+      objectReference: {fileID: 244752345}
     - target: {fileID: 4814790939753603404, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
         type: 3}
       propertyPath: leftWeapon
@@ -9338,7 +9369,7 @@ PrefabInstance:
     - target: {fileID: 4814790939753603407, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4814790939753603407, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
         type: 3}
@@ -9439,6 +9470,12 @@ MonoBehaviour:
 --- !u!4 &4814790940615734730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6979836084993440514, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
+    type: 3}
+  m_PrefabInstance: {fileID: 4814790940615734727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &4814790940615734737 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 4814790939753603400, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
     type: 3}
   m_PrefabInstance: {fileID: 4814790940615734727}
   m_PrefabAsset: {fileID: 0}

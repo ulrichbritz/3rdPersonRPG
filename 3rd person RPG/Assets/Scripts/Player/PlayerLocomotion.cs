@@ -13,6 +13,9 @@ public class PlayerLocomotion : MonoBehaviour
     Transform cameraObject;
     public Rigidbody rb;
 
+    public CapsuleCollider characterCollider;
+    public CapsuleCollider characterCollisionBlockerCollider;
+
     [Header("Falling")]
     public float inAirTimer;
     public float leapingVelocity;
@@ -45,6 +48,11 @@ public class PlayerLocomotion : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         cameraObject = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
     }
 
     public void HandleAllMovement()

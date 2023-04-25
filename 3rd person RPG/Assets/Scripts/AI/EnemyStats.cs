@@ -15,6 +15,9 @@ public class EnemyStats : CharacterStats
 
     public override void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
+
         base.TakeDamage(damage);
 
         animator.Play("Damage_01");
@@ -23,6 +26,7 @@ public class EnemyStats : CharacterStats
         {
             currentHP = 0;
             animator.Play("Death_01");
+            isDead = true;
             //handle enemy death
         }
     }

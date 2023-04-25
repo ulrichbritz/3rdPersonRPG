@@ -18,6 +18,9 @@ public class PlayerStats : CharacterStats
 
     public override void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
+
         base.TakeDamage(damage);
 
         animatorManager.PlayTargetAnimation("Damage_01", true, true);
@@ -26,6 +29,7 @@ public class PlayerStats : CharacterStats
         {
             currentHP = 0;
             animatorManager.PlayTargetAnimation("Death_01", true, true);
+            isDead = true;
             //handle death
         }
     }

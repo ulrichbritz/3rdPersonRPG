@@ -20,6 +20,8 @@ public class CharacterStats : MonoBehaviour
     public int maxStamina;
     public int currentStamina;
 
+    public bool isDead;
+
     public virtual void Awake()
     {
     }
