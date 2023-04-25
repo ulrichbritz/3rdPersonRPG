@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EnemyAnimatorManager : CharacterAnimationManager
 {
-    EnemyLocomotionManager enemyLocomotionManager;
+    EnemyManager enemyManager;
 
     public override void Awake()
     {
         base.Awake();
 
-        enemyLocomotionManager = GetComponentInParent<EnemyLocomotionManager>();
+        enemyManager = GetComponentInParent<EnemyManager>();
     }
 
     private void OnAnimatorMove()
     {
         float delta = Time.deltaTime;
-        enemyLocomotionManager.enemyrb.drag = 0;
+        enemyManager.enemyrb.drag = 0;
         Vector3 deltaPos = anim.deltaPosition;
         deltaPos.y = 0;
         Vector3 velocity = deltaPos / delta;
-        enemyLocomotionManager.enemyrb.velocity = velocity;
+        enemyManager.enemyrb.velocity = velocity;
     }
 }
