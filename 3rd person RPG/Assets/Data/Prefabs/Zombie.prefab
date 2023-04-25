@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fddd7f313fcfd9449c1d94e1ffa110d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandWeapon: {fileID: 11400000, guid: a877c2fc9c3458f4990494e34580481c, type: 2}
+  rightHandWeapon: {fileID: 11400000, guid: 24aab8a049c93ce458d84bcdba81c104, type: 2}
   leftHandWeapon: {fileID: 11400000, guid: 24aab8a049c93ce458d84bcdba81c104, type: 2}
   unarmed: {fileID: 11400000, guid: 24aab8a049c93ce458d84bcdba81c104, type: 2}
 --- !u!114 &3646267300022114932

@@ -14,10 +14,10 @@ public class AttackState : State
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
 
+        HandleRotateTowardTarget(enemyManager); 
+
         if (enemyManager.isPerformingAction)
             return combatStanceState;
-
-        HandleRotateTowardTarget(enemyManager); //maybe put this above check for performing action
 
         if (currentAttack != null)
         {
