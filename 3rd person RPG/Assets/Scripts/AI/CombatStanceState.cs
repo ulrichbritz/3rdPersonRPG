@@ -13,6 +13,8 @@ public class CombatStanceState : State
 
         //maybe circle around player
 
+        HandleRotateTowardTarget(enemyManager);
+
         if (enemyManager.isPerformingAction)
         {
             enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
@@ -33,5 +35,35 @@ public class CombatStanceState : State
             return this;
         }
  
+    }
+
+    private void HandleRotateTowardTarget(EnemyManager enemyManager)
+    {
+        //rotate manually
+        if (enemyManager.isPerformingAction)
+        {
+            Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+            direction.y = 0;
+            direction.Normalize();
+
+            if (direction == Vector3.zero)
+            {
+                direction = enemyManager.transform.forward;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, enemyManager.rotationSpeed * Time.deltaTime);
+        }
+        //rotate with navmesh(pathfinding)
+        else
+        {
+            Vector3 relativeDirection = enemyManager.transform.InverseTransformDirection(enemyManager.agent.desiredVelocity);
+            Vector3 targetVelocity = enemyManager.enemyrb.velocity;
+
+            enemyManager.agent.enabled = true;
+            enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);
+            enemyManager.enemyrb.velocity = targetVelocity;
+            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.agent.transform.rotation, enemyManager.rotationSpeed * Time.deltaTime);
+        }
     }
 }

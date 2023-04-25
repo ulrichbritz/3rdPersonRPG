@@ -43,6 +43,7 @@ public class WeaponSlotManager : MonoBehaviour
     {
         if (isLeft)
         {
+            leftHandSlot.currentWeapon = weaponItem;
             leftHandSlot.LoadWeaponModel(weaponItem);
             LoadLeftWeaponDamageCollider();
 
@@ -61,7 +62,8 @@ public class WeaponSlotManager : MonoBehaviour
         {
             if (isTwoHanded)
             {
-                //unload other slots
+                //backslot.loadweaponmodel(lefthandslot.currentweapon);
+                //onload and destroy the arrows from hand so only shows on back
                 animator.CrossFade(weaponItem.two_Hand_Idle, 0.2f);
             }
             else
@@ -80,6 +82,7 @@ public class WeaponSlotManager : MonoBehaviour
                 #endregion
             }
 
+            rightHandSlot.currentWeapon = weaponItem;
             rightHandSlot.LoadWeaponModel(weaponItem);
             LoadRightWeaponDamageCollider();
 

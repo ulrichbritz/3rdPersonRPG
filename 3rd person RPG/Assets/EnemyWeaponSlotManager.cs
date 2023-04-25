@@ -85,12 +85,22 @@ public class EnemyWeaponSlotManager : MonoBehaviour
         }
     }
 
-    public void OpenDamageCollider()
+    public void OpenLeftHandDamageCollider()
+    {
+        leftHandDamageCollider.EnableDamageCollider();
+    }
+
+    public void OpenRightHandDamageCollider()
     {
         rightHandDamageCollider.EnableDamageCollider();
     }
 
-    public void CloseDamageCollider()
+    public void CloseLeftHandDamageCollider()
+    {
+        leftHandDamageCollider.DisableDamageCollider();
+    }
+
+    public void CloseRightHandDamageCollider()
     {
         rightHandDamageCollider.DisableDamageCollider();
     }

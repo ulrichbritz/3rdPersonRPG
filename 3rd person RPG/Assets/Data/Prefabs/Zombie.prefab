@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 2030903748570054247}
-  currentState: {fileID: 7085974778345411273}
+  currentState: {fileID: 3461481781284247112}
   currentTarget: {fileID: 0}
   agent: {fileID: 0}
   enemyrb: {fileID: 0}
