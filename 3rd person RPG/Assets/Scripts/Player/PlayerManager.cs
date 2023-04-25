@@ -16,7 +16,8 @@ public class PlayerManager : CharacterManager
     public bool isInteracting;
     public bool isUsingRootMotion;
     public bool canDoCombo;
-
+    public bool isUsingRightHand;
+    public bool isUsingLeftHand;
     
 
 

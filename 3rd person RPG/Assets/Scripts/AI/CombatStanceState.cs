@@ -13,6 +13,11 @@ public class CombatStanceState : State
 
         //maybe circle around player
 
+        if (enemyManager.isPerformingAction)
+        {
+            enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+        }
+
         //if in attack range switch to attack state
         if (enemyManager.currentRecoveryTime <= 0 && distanceFromTarget <= enemyManager.maxAttackRange)
         {
