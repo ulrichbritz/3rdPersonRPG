@@ -9361,6 +9361,11 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 585447208}
+    - target: {fileID: 4814790939753603405, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
+        type: 3}
+      propertyPath: staminaRegenAmount
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4814790939753603407, guid: 1eb7cb3b8457f8a4ea23579b77894b83,
         type: 3}
       propertyPath: m_Name

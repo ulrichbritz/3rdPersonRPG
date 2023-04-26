@@ -68,7 +68,6 @@ public class PlayerStats : CharacterStats
 
     public void RegenerateStamina()
     {
-        print(playerManager.isInteracting);
         if (playerManager.isInteracting)
         {
             staminaRegenTimer = 0;
