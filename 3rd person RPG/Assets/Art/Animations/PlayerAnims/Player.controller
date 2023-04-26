@@ -751,6 +751,8 @@ MonoBehaviour:
   isUsingRightHandStatus: 0
   isUsingLeftHandBool: isUsingLeftHand
   isUsingLeftHandStatus: 0
+  isInvulnerableBool: isInvulnerable
+  isInvulnerableStatus: 0
 --- !u!1102 &-1512855207278616620
 AnimatorState:
   serializedVersion: 6
@@ -969,6 +971,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: isUsingLeftHand
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isInvulnerable
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

@@ -19,6 +19,9 @@ public class ResetBool : StateMachineBehaviour
     public string isUsingLeftHandBool;
     public bool isUsingLeftHandStatus;
 
+    public string isInvulnerableBool;
+    public bool isInvulnerableStatus;
+
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -28,6 +31,7 @@ public class ResetBool : StateMachineBehaviour
         animator.SetBool(canDoComboBool, canDoComboStatus);
         animator.SetBool(isUsingRightHandBool, isUsingRightHandStatus);
         animator.SetBool(isUsingLeftHandBool, isUsingLeftHandStatus);
+        animator.SetBool(isInvulnerableBool, isInvulnerableStatus);
     }
 
     

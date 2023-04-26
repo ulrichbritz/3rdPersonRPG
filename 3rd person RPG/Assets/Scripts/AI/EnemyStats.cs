@@ -6,11 +6,22 @@ public class EnemyStats : CharacterStats
 {
     Animator animator;
 
+    public HealthBar healthBar;
+
     public override void Awake()
     {
         base.Awake();
 
         animator = GetComponentInChildren<Animator>();
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
+        currentHP = maxHP;
+        healthBar.SetMaxHealth(maxHP);
+
     }
 
     public override void TakeDamage(int damage)
@@ -19,6 +30,8 @@ public class EnemyStats : CharacterStats
             return;
 
         base.TakeDamage(damage);
+
+        healthBar.SetCurrentHealth(currentHP);
 
         animator.Play("Damage_01");
 

@@ -106,15 +106,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  healthBar: {fileID: 2030903747042395416}
-  staminaBar: {fileID: 0}
-  Strength: 10
-  Vitality: 10
-  maxHP: 0
+  Strength: 0
+  Vitality: 0
+  maxHP: 100
   currentHP: 0
   maxStamina: 0
   currentStamina: 0
   isDead: 0
+  healthBar: {fileID: 2030903747042395416}
 --- !u!54 &2030903746696530089
 Rigidbody:
   m_ObjectHideFlags: 0

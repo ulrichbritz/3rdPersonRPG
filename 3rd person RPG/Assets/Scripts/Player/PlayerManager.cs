@@ -7,6 +7,7 @@ public class PlayerManager : CharacterManager
     Animator anim;
     InputManager inputManager;
     CameraManager cameraManager;
+    PlayerStats playerStats;
     PlayerLocomotion playerLocomotion;
 
     InteractableUI interactableUI;
@@ -18,6 +19,7 @@ public class PlayerManager : CharacterManager
     public bool canDoCombo;
     public bool isUsingRightHand;
     public bool isUsingLeftHand;
+    public bool isInvulnerable;
     
 
 
@@ -26,7 +28,8 @@ public class PlayerManager : CharacterManager
     {
         cameraManager = FindObjectOfType<CameraManager>();
         anim = GetComponentInChildren<Animator>();
-        inputManager = GetComponent<InputManager>();  
+        inputManager = GetComponent<InputManager>();
+        playerStats = GetComponent<PlayerStats>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         interactableUI = FindAnyObjectByType<InteractableUI>();
     }
@@ -38,6 +41,7 @@ public class PlayerManager : CharacterManager
 
         inputManager.HandleAllInputs();
         CheckForInteractable();
+        playerStats.RegenerateStamina();
     }
 
     private void FixedUpdate()
@@ -53,6 +57,7 @@ public class PlayerManager : CharacterManager
         isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
         isUsingRootMotion = anim.GetBool("isUsingRootMotion");
+        isInvulnerable = anim.GetBool("isInvulnerable");
         playerLocomotion.isJumping = anim.GetBool("isJumping");
         anim.SetBool("isGrounded", playerLocomotion.isGrounded);
 

@@ -114,6 +114,16 @@ public class AnimatorManager : CharacterAnimationManager
         anim.SetBool("canDoCombo", false);
     }
 
+    public void EnableIsInvulnerable()
+    {
+        anim.SetBool("isInvulnerable", true);
+    }
+
+    public void DisableIsInvulnerable()
+    {
+        anim.SetBool("isInvulnerable", false);
+    }
+
     private void OnAnimatorMove()
     {
         if (playerManager.isUsingRootMotion)

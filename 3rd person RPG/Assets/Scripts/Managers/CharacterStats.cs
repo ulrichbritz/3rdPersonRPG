@@ -6,10 +6,6 @@ public class CharacterStats : MonoBehaviour
 {
     public bool isPlayer = false;
 
-    public HealthBar healthBar;
-    public StaminaBar staminaBar;
-
-
     public int Strength = 10;
     public int Vitality = 10;
 
@@ -17,8 +13,8 @@ public class CharacterStats : MonoBehaviour
     public int maxHP;
     public int currentHP;
 
-    public int maxStamina;
-    public int currentStamina;
+    public float maxStamina;
+    public float currentStamina;
 
     public bool isDead;
 
@@ -28,17 +24,12 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Start()
     {
-        maxHP = SetMaxHealthFromStrength();
-        currentHP = maxHP;
-        healthBar.SetMaxHealth(maxHP);
+          
+    }
 
-        if(isPlayer)
-        {
-            maxStamina = SetMaxStaminaFromVitality();
-            currentStamina = maxStamina;
-            staminaBar.SetMaxStamina(maxStamina);
-        }
-        
+    public virtual void TakeDamage(int damage)
+    {
+        currentHP -= damage;
     }
 
     public virtual int SetMaxHealthFromStrength()
@@ -47,24 +38,10 @@ public class CharacterStats : MonoBehaviour
         return maxHP;
     }
 
-    private int SetMaxStaminaFromVitality()
+    public float SetMaxStaminaFromVitality()
     {
         maxStamina = Vitality * 10;
         return maxStamina;
     }
 
-    public virtual void TakeDamage(int damage)
-    {
-        currentHP -= damage;
-
-        healthBar.SetCurrentHealth(currentHP);
-
-    }
-
-    public void DrainStamina(int amount)
-    {
-        currentStamina -= amount;
-
-        staminaBar.SetCurrentStamina(currentStamina);
-    }
 }

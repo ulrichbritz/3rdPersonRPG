@@ -127,12 +127,22 @@ public class WeaponSlotManager : MonoBehaviour
     #region Handle Weapon Stamina Drain 
     public void DrainStaminaOnLightAttack()
     {
-        characterStats.DrainStamina(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.lightAttackStaminaMultiplier));
+        PlayerStats playerStats = characterStats as PlayerStats;
+
+        if (playerStats != null)
+        {
+            playerStats.DrainStamina(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.lightAttackStaminaMultiplier));
+        }  
     }
 
     public void DrainStaminaOnHeavyAttack()
     {
-        characterStats.DrainStamina(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.lightAttackStaminaMultiplier));
+        PlayerStats playerStats = characterStats as PlayerStats;
+
+        if (playerStats != null)
+        {
+            playerStats.DrainStamina(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.heavyAttackStaminaMultiplier));
+        }
     }
     #endregion
 }

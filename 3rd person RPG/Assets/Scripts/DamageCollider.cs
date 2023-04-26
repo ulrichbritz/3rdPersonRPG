@@ -28,13 +28,22 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Hittable" || other.tag == "Player" || other.tag == "Enemy")
+        if(other.tag == "Hittable" || other.tag == "Enemy")
         {
             CharacterStats characterStats = other.GetComponent<CharacterStats>();
 
             if(characterStats != null)
             {
-                print("got enemy stats");
+                characterStats.TakeDamage(currentWeaponDamage);
+            }
+        }
+
+        if (other.tag == "Player")
+        {
+            CharacterStats characterStats = other.GetComponent<CharacterStats>();
+
+            if (characterStats != null)
+            {
                 characterStats.TakeDamage(currentWeaponDamage);
             }
         }
