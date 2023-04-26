@@ -131,7 +131,7 @@ public class WeaponSlotManager : MonoBehaviour
 
         if (playerStats != null)
         {
-            playerStats.DrainStamina(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.lightAttackStaminaMultiplier));
+            playerStats.DrainStaminaFromAction(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.lightAttackStaminaMultiplier));
         }  
     }
 
@@ -141,7 +141,7 @@ public class WeaponSlotManager : MonoBehaviour
 
         if (playerStats != null)
         {
-            playerStats.DrainStamina(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.heavyAttackStaminaMultiplier));
+            playerStats.DrainStaminaFromAction(Mathf.RoundToInt(usedWeapon.baseStaminaCost * usedWeapon.heavyAttackStaminaMultiplier));
         }
     }
     #endregion

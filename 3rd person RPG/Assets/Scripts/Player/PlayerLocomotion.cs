@@ -8,6 +8,7 @@ public class PlayerLocomotion : MonoBehaviour
     PlayerManager playerManager;
     AnimatorManager animatorManager;
     InputManager inputManager;
+    PlayerStats playerStats;
 
     Vector3 moveDirection;
     Transform cameraObject;
@@ -46,6 +47,8 @@ public class PlayerLocomotion : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         animatorManager = GetComponentInChildren<AnimatorManager>();
         inputManager = GetComponent<InputManager>();
+        playerStats = GetComponent<PlayerStats>();
+
         cameraObject = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
     }
@@ -64,8 +67,14 @@ public class PlayerLocomotion : MonoBehaviour
             return;
         }
 
+        if (isSprinting)
+        {
+            playerStats.DrainStaminaFromSprinting();
+        }
+
         HandleMovement();
         HandleRotation();
+        
     }
 
     private void HandleMovement()

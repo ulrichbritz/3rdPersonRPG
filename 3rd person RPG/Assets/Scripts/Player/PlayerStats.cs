@@ -6,11 +6,13 @@ public class PlayerStats : CharacterStats
 {
     AnimatorManager animatorManager;
     PlayerManager playerManager;
+    PlayerLocomotion playerLocomotion;
 
     public HealthBar healthBar;
     public StaminaBar staminaBar;
 
     public float staminaRegenAmount = 30f;
+    public float staminaSprintDrainAmount = 20f;
     private float staminaRegenTimer;
 
 
@@ -20,6 +22,7 @@ public class PlayerStats : CharacterStats
 
         animatorManager = GetComponentInChildren<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
+        playerLocomotion = GetComponent<PlayerLocomotion>();
     }
 
     public override void Start()
@@ -59,7 +62,21 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    public void DrainStamina(int amount)
+    public void DrainStaminaFromSprinting()
+    {
+        if (playerLocomotion.isSprinting)
+        {
+            staminaRegenTimer = 0f;
+
+            if (currentStamina <= maxStamina)
+            {
+                currentStamina -= staminaSprintDrainAmount * Time.deltaTime;
+                staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+            }
+        }
+    }
+
+    public void DrainStaminaFromAction(int amount)
     {
         currentStamina -= amount;
 
@@ -68,7 +85,7 @@ public class PlayerStats : CharacterStats
 
     public void RegenerateStamina()
     {
-        if (playerManager.isInteracting)
+        if (playerManager.isInteracting || playerLocomotion.isSprinting)
         {
             staminaRegenTimer = 0;
         }
