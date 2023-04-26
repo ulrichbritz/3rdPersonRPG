@@ -246,9 +246,25 @@ public class PlayerLocomotion : MonoBehaviour
             return;
         }
 
-        animatorManager.PlayTargetAnimation("Dodge", true, true);
+        moveDirection = cameraObject.forward * inputManager.verticalInput;
+        moveDirection += cameraObject.right * inputManager.horizontalInput;
+
+        if (inputManager.moveAmount > 0)
+        {
+            animatorManager.PlayTargetAnimation("Roll", true, true);
+            moveDirection.y = 0;
+
+            Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = rollRotation;
+        }
+        else
+        {
+            animatorManager.PlayTargetAnimation("Dodge", true, true);
+        }
         //toggle invulnerability
     }
+
+
 
    
 }

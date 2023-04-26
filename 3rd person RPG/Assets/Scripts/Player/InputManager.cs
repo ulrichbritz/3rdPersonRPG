@@ -40,6 +40,7 @@ public class InputManager : MonoBehaviour
     public bool inventoryFlag;
     public bool equipmentFlag;
     public bool lockOnFlag;
+    //public bool rollFlag;
 
     [Header("JumpTimers")]
     bool canPressJump = true;
@@ -162,6 +163,7 @@ public class InputManager : MonoBehaviour
         if (dodgeInput)
         {
             dodgeInput = false;
+            //rollFlag = true;
             playerLocomotion.HandleDodge();
         }
     }
