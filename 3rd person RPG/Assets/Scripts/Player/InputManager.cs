@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour
     UIManager uiManager;
     CameraManager cameraManager;
 
+    [SerializeField] LayerMask clickIgnoreLayerMask;
+
     public Vector2 movementInput;
     public float moveAmount;
     public float verticalInput;
@@ -27,7 +29,7 @@ public class InputManager : MonoBehaviour
     public bool jumpInput;
     public bool dodgeInput;
     public bool lightAttackInput;
-    public bool heavyAttackInput;
+    public bool rightClickLockOnInput;
     public bool interactInput;
     public bool inventoryInput;
     public bool equipmentInput;
@@ -75,7 +77,7 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
 
             playerControls.PlayerActions.LightAttack.performed += i => lightAttackInput = true;
-            playerControls.PlayerActions.HeavyAttack.performed += i => heavyAttackInput = true;
+            playerControls.PlayerActions.RightClickLockOn.performed += i => rightClickLockOnInput = true;
 
             playerControls.PlayerActions.Interact.performed += i => interactInput = true;
 
@@ -113,6 +115,7 @@ public class InputManager : MonoBehaviour
         HandleJumpInput();
         HandleDodgeInput();
         HandleAttackInput();
+        HandleRightClickLockOnInput();
         HandleInteractInput();
         HandleInventoryInput();
         HandleEquipmentInput();
@@ -204,10 +207,30 @@ public class InputManager : MonoBehaviour
             
         }
 
-        if (heavyAttackInput)
+    }
+
+    private void HandleRightClickLockOnInput()
+    {
+        if (rightClickLockOnInput)
         {
-            heavyAttackInput = false;
-            playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+            rightClickLockOnInput = false;
+
+            Ray ray = cameraManager.playerCam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickIgnoreLayerMask))
+            {
+                if (hit.collider != null)
+                {
+                    print(hit.collider.gameObject.name);
+                    CharacterManager hitCharacterManager = hit.collider.gameObject.GetComponent<CharacterManager>();
+
+                    if (hitCharacterManager != null)
+                    {
+                        cameraManager.HandleLockOn();
+                        cameraManager.currentLockOnTarget = hitCharacterManager;
+                        lockOnFlag = true;
+                    }
+                }
+            }
         }
     }
 

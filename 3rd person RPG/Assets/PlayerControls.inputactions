@@ -284,15 +284,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HeavyAttack",
-                    "type": "Button",
-                    "id": "fc9477f4-8eeb-4769-b6a4-0827f03fdb70",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "fc65222b-75a0-4ae4-9979-db8670c5ccd0",
@@ -323,6 +314,15 @@
                     "name": "LockOn",
                     "type": "Button",
                     "id": "60bbb85b-55dd-45eb-a509-21e378e51797",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightClickLockOn",
+                    "type": "Button",
+                    "id": "2825dfee-b06c-495b-9796-31ad1b44e18f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -398,17 +398,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3bdf6809-0fa0-4ee7-b1c4-b4c8ac543678",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HeavyAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b9a960d5-895b-46eb-8efb-679e3c52dfb6",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -448,6 +437,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LockOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c03a797d-5fac-4f45-b0ef-74c0d8605652",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClickLockOn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

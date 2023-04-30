@@ -15,6 +15,9 @@ public class CameraManager : MonoBehaviour
     public LayerMask environmentLayer;
     private float defaultPos;
 
+    [Header("Lock On Visuals")]
+    [SerializeField] GameObject lockOnVisuals;
+
     [Header("Camera Settings")] //these settings can be changed to tweak cam performance
     private float smoothTime = 1f;
     [SerializeField] float leftAndRightRotationSpeed = 220;
@@ -70,6 +73,19 @@ public class CameraManager : MonoBehaviour
     {
         environmentLayer = LayerMask.NameToLayer("Environment");
         defaultCameraZPos = cameraTransform.transform.localPosition.z;
+    }
+
+    private void Update()
+    {
+        if (currentLockOnTarget != null)
+        {
+            lockOnVisuals.SetActive(true);
+            lockOnVisuals.transform.position = currentLockOnTarget.transform.position;
+        }
+        else
+        {
+            lockOnVisuals.SetActive(false);
+        }
     }
 
     public void HandleAllCameraMovement()
