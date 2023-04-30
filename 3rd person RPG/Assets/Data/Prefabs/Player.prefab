@@ -1238,7 +1238,6 @@ GameObject:
   - component: {fileID: 4814790939753603403}
   - component: {fileID: 4814790939753603404}
   - component: {fileID: 4814790939753603405}
-  - component: {fileID: 4814790939753603413}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1314,6 +1313,7 @@ MonoBehaviour:
   canDoCombo: 0
   isUsingRightHand: 0
   isUsingLeftHand: 0
+  isInvulnerable: 0
 --- !u!114 &4814790939753603402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,6 +1326,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f050598c99e09134e9913c0201c99837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftClickIgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rightClickIgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   movementInput: {x: 0, y: 0}
   moveAmount: 0
   verticalInput: 0
@@ -1337,7 +1343,7 @@ MonoBehaviour:
   jumpInput: 0
   dodgeInput: 0
   lightAttackInput: 0
-  heavyAttackInput: 0
+  rightClickLockOnInput: 0
   interactInput: 0
   inventoryInput: 0
   equipmentInput: 0
@@ -1417,8 +1423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  healthBar: {fileID: 0}
-  staminaBar: {fileID: 0}
   Strength: 10
   Vitality: 10
   maxHP: 0
@@ -1426,19 +1430,10 @@ MonoBehaviour:
   maxStamina: 0
   currentStamina: 0
   isDead: 0
---- !u!114 &4814790939753603413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4814790939753603407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d233eb1dedb2324e9c063f77e82b657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastAttack: 
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  staminaRegenAmount: 30
+  staminaSprintDrainAmount: 20
 --- !u!1 &4823645234547536663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1575,7 @@ GameObject:
   - component: {fileID: 4814790939647147511}
   - component: {fileID: 5303121850861496491}
   - component: {fileID: 5625271948199247938}
+  - component: {fileID: 5301357984429997215}
   m_Layer: 10
   m_Name: Visuals
   m_TagString: Player
@@ -1655,6 +1651,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+--- !u!114 &5301357984429997215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625271948199248063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d233eb1dedb2324e9c063f77e82b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastAttack: 
 --- !u!1 &5783998091163896323
 GameObject:
   m_ObjectHideFlags: 0

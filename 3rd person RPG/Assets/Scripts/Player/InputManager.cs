@@ -14,8 +14,8 @@ public class InputManager : MonoBehaviour
     UIManager uiManager;
     CameraManager cameraManager;
 
-    [SerializeField] LayerMask leftClickIgnoreLayerMask;
-    [SerializeField] LayerMask rightClickIgnoreLayerMask;
+    public LayerMask leftClickHitLayerMask;
+    public LayerMask rightClickHitLayerMask;
 
     public Vector2 movementInput;
     public float moveAmount;
@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
     {
         animatorManager = GetComponentInChildren<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
-        playerAttacker = GetComponent<PlayerAttacker>();
+        playerAttacker = GetComponentInChildren<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         uiManager = FindObjectOfType<UIManager>();
@@ -176,36 +176,8 @@ public class InputManager : MonoBehaviour
     {
         if (lightAttackInput)
         {
-            if(cameraManager.currentLockOnTarget == null)
-            {
-                Vector3 direction;
-                Vector3 mouseWorldPos;
-                Ray ray = cameraManager.playerCam.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, leftClickIgnoreLayerMask))
-                {
-                    mouseWorldPos = hit.point;
-                    direction = mouseWorldPos - transform.position;
-                    direction.Normalize();
-                    direction.y = 0;
-
-                    Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    transform.rotation = targetRotation;
-                }     
-            }
-
-            if (playerManager.canDoCombo)
-            {
-                comboFlag = true;
-                playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
-                comboFlag = false;
-            }
-            else
-            {
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
-            }
-
             lightAttackInput = false;
-            
+            playerAttacker.HandleAttackAction();
         }
 
     }
@@ -219,7 +191,7 @@ public class InputManager : MonoBehaviour
             cameraManager.ClearLockOnTargets();
 
             Ray ray = cameraManager.playerCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, rightClickIgnoreLayerMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, rightClickHitLayerMask))
             {
                 if (hit.collider != null)
                 {
