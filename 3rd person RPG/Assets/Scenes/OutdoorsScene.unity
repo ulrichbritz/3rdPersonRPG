@@ -1511,8 +1511,8 @@ MonoBehaviour:
   lockOnVisuals: {fileID: 1388967340}
   leftAndRightRotationSpeed: 40
   upAndDownRotationSpeed: 40
-  minPivot: 10
-  maxPivot: 60
+  minPivot: -30
+  maxPivot: 30
   cameraCollisionRaduis: 0.2
   collisionLayers:
     serializedVersion: 2
