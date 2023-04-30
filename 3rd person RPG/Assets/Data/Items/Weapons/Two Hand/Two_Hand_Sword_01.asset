@@ -17,10 +17,12 @@ MonoBehaviour:
   itemName: Two_Hand_Sword_01
   equipSlotPiece: 6
   armorModifier: 0
+  weaponType: 2
   modelPrefab: {fileID: 4541183788452812780, guid: 7259b07abe58c9545bc496cc03a186a7,
     type: 3}
-  isTwoHanded: 1
   isDuelWield: 0
+  isTwoHanded: 1
+  isBow: 0
   isUnarmed: 0
   right_Hand_Idle: 
   left_Hand_Idle: 

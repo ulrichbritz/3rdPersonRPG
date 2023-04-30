@@ -66,7 +66,7 @@ public class PlayerInventory : MonoBehaviour
                 weaponsInLeftHandSlots[0] = leftWeapon;
                 weaponSlotManager.LoadWeaponOnSlot(leftWeapon, false);
             }
-            else if (newWeaponItem.weaponType == WeaponType.TwoHand)
+            else if (newWeaponItem.weaponType == WeaponType.TwoHand || newWeaponItem.weaponType == WeaponType.Staff)
             {
                 rightWeapon = newWeaponItem;
                 weaponsInRightHandSlots[0] = rightWeapon;
@@ -74,7 +74,7 @@ public class PlayerInventory : MonoBehaviour
                 weaponSlotManager.LoadWeaponOnSlot(rightWeapon, false, true);
                 weaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);
             }
-            else if (newWeaponItem.weaponType == WeaponType.DuelWield)
+            else if (newWeaponItem.weaponType == WeaponType.DuelWield || newWeaponItem.weaponType == WeaponType.Guns)
             {
                 rightWeapon = newWeaponItem;
                 weaponsInRightHandSlots[0] = rightWeapon;

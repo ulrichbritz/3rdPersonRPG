@@ -17,10 +17,12 @@ MonoBehaviour:
   itemName: Duel_Wield_01
   equipSlotPiece: 6
   armorModifier: 0
+  weaponType: 1
   modelPrefab: {fileID: 958383559116711054, guid: 86f3db3278f6f734fba6c9d66c8aca7d,
     type: 3}
-  isTwoHanded: 0
   isDuelWield: 1
+  isTwoHanded: 0
+  isBow: 0
   isUnarmed: 0
   right_Hand_Idle: Right_Arm_Idle_01
   left_Hand_Idle: Left_Arm_Idle_01

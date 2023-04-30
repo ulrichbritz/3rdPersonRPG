@@ -44,7 +44,7 @@ public class EquipmentManager : MonoBehaviour
         {
             WeaponItem newWeaponItem = newItem as WeaponItem;
             //check for two handed
-            if (newWeaponItem.isTwoHanded)
+            if (newWeaponItem.weaponType == WeaponType.TwoHand || newWeaponItem.weaponType == WeaponType.DuelWield || newWeaponItem.weaponType == WeaponType.Bow || newWeaponItem.weaponType == WeaponType.Guns || newWeaponItem.weaponType == WeaponType.Staff)
             {
                 if (currentEquipment[slotIndex] != null)
                 {
@@ -55,18 +55,6 @@ public class EquipmentManager : MonoBehaviour
                 {
                     Unequip(slotIndex + 1);
                 }              
-            }
-            else if (newWeaponItem.isDuelWield)
-            {
-                if (currentEquipment[slotIndex] != null)
-                {
-                    Unequip(slotIndex);
-                }
-
-                if (currentEquipment[slotIndex + 1] != null)
-                {
-                    Unequip(slotIndex + 1);
-                }
             }
             //normal one handed
             else
@@ -81,7 +69,7 @@ public class EquipmentManager : MonoBehaviour
             if (currentEquipment[6] != null)
             {
                 WeaponItem currentWeapon = currentEquipment[6] as WeaponItem;
-                if(currentWeapon.isTwoHanded || currentWeapon.isDuelWield)
+                if(currentWeapon.weaponType == WeaponType.TwoHand || currentWeapon.weaponType == WeaponType.DuelWield || currentWeapon.weaponType == WeaponType.Bow || currentWeapon.weaponType == WeaponType.Guns || currentWeapon.weaponType == WeaponType.Staff)
                 {
                     Unequip(slotIndex - 1);
                 }

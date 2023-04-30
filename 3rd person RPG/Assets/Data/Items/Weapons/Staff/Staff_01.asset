@@ -10,26 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe7a537c219542c4585c130d35bc1a81, type: 3}
-  m_Name: Bow_01
+  m_Name: Staff_01
   m_EditorClassIdentifier: 
   isDefaultItem: 0
-  itemIcon: {fileID: 21300000, guid: 4d8f5883d55e85347ac6516b47762350, type: 3}
-  itemName: Bow_01
+  itemIcon: {fileID: 21300000, guid: c76d0fe009100194891bc909171a6c17, type: 3}
+  itemName: Staff_01
   equipSlotPiece: 6
   armorModifier: 0
-  weaponType: 3
-  modelPrefab: {fileID: 4541183788452812780, guid: 73c6aa499933e1b479523148a2da30cb,
+  weaponType: 5
+  modelPrefab: {fileID: 210187954368165424, guid: 6e66190f91a79a3409be203a871d81eb,
     type: 3}
-  isDuelWield: 0
-  isTwoHanded: 1
-  isBow: 1
-  isUnarmed: 0
   right_Hand_Idle: 
   left_Hand_Idle: 
-  two_Hand_Idle: Bow_Idle_01
-  OH_Light_Attack_01: Bow_Light_Attack_01
-  OH_Light_Attack_02: 
+  two_Hand_Idle: Two_Hand_Idle_01
+  OH_Light_Attack_01: Two_Hand_Attack_01
+  OH_Light_Attack_02: Two_Hand_Attack_02
   OH_Heavy_Attack_01: 
-  baseStaminaCost: 20
+  baseStaminaCost: 10
   lightAttackStaminaMultiplier: 1
   heavyAttackStaminaMultiplier: 2
