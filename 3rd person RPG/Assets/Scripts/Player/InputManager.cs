@@ -14,7 +14,8 @@ public class InputManager : MonoBehaviour
     UIManager uiManager;
     CameraManager cameraManager;
 
-    [SerializeField] LayerMask clickIgnoreLayerMask;
+    [SerializeField] LayerMask leftClickIgnoreLayerMask;
+    [SerializeField] LayerMask rightClickIgnoreLayerMask;
 
     public Vector2 movementInput;
     public float moveAmount;
@@ -180,7 +181,7 @@ public class InputManager : MonoBehaviour
                 Vector3 direction;
                 Vector3 mouseWorldPos;
                 Ray ray = cameraManager.playerCam.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, leftClickIgnoreLayerMask))
                 {
                     mouseWorldPos = hit.point;
                     direction = mouseWorldPos - transform.position;
@@ -214,9 +215,11 @@ public class InputManager : MonoBehaviour
         if (rightClickLockOnInput)
         {
             rightClickLockOnInput = false;
+            lockOnFlag = false;
+            cameraManager.ClearLockOnTargets();
 
             Ray ray = cameraManager.playerCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickIgnoreLayerMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, rightClickIgnoreLayerMask))
             {
                 if (hit.collider != null)
                 {
