@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Equipment Item/Weapon Item")]
 public class WeaponItem : EquipmentItem
 {
+    public WeaponType weaponType;
+
     public GameObject modelPrefab;
     public bool isDuelWield;
     public bool isTwoHanded;
@@ -28,3 +30,5 @@ public class WeaponItem : EquipmentItem
     public float heavyAttackStaminaMultiplier;
 
 }
+
+public enum WeaponType { OneHand, DuelWield, TwoHand, Bow, Guns}

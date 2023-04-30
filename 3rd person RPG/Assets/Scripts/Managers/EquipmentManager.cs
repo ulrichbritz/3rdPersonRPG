@@ -40,7 +40,7 @@ public class EquipmentManager : MonoBehaviour
         EquipmentItem oldItem = null;
 
         //check to see if weapon
-        if ((int)newItem.equipSlotPiece == 6)
+        if (newItem.equipSlotPiece == EquipmentSlotPiece.Weapon)
         {
             WeaponItem newWeaponItem = newItem as WeaponItem;
             //check for two handed
@@ -75,7 +75,7 @@ public class EquipmentManager : MonoBehaviour
             }
         }
         //is offhand
-        else if ((int)newItem.equipSlotPiece == 7)
+        else if (newItem.equipSlotPiece == EquipmentSlotPiece.OffHand)
         {
             WeaponItem newOffhandItem = newItem as WeaponItem;
             if (currentEquipment[6] != null)
