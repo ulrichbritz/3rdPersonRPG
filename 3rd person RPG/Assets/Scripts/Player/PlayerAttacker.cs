@@ -28,6 +28,7 @@ public class PlayerAttacker : MonoBehaviour
     #region Input Actions
     public void HandleAttackAction()
     {
+        print(cameraManager.currentLockOnTarget);
         if (cameraManager.currentLockOnTarget == null)
         {
             Vector3 direction;
@@ -36,12 +37,13 @@ public class PlayerAttacker : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, inputManager.leftClickHitLayerMask))
             {
                 mouseWorldPos = hit.point;
-                direction = mouseWorldPos - transform.position;
+                direction = mouseWorldPos - inputManager.transform.position;
                 direction.Normalize();
                 direction.y = 0;
 
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = targetRotation;
+                inputManager.transform.rotation = targetRotation;
+                print("rotate!");
             }
         }
 
@@ -59,11 +61,16 @@ public class PlayerAttacker : MonoBehaviour
                 //handle ranged action
             }
         }
+        //until unarmed set to default equipment
+        else
+        {
+            PerformMeleeAttack();
+        }
     }
 
-    public void HandleAbilityAction()
+    public void HandleAbilityAction(int slotIndex)
     {
-
+        PerformAbilityAction(null);
     }
 
     #endregion
@@ -93,9 +100,12 @@ public class PlayerAttacker : MonoBehaviour
 
     #region Perfom Ability Action
 
-    private void PerformAbilityAction()
+    private void PerformAbilityAction(Ability ability)
     {
-
+        if (ability.spellType == AbilityType.Damage)
+        {
+            
+        }
     }
 
     #endregion

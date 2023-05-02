@@ -17,6 +17,10 @@ public class Ability : MonoBehaviour
     [TextArea]
     public string abilityDescription;
 
+    [Header("Ability Requirements")]
+    public EquipmentSlotPiece requiredItemType;
+    public WeaponType requiredWeaponType;
+
     public virtual void AttemptToCastAbility()
     {
         print("attempt to cast");
