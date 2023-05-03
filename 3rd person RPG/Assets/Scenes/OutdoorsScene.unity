@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6698.328, g: 6732.6406, b: 7881.867, a: 1}
+  m_IndirectSpecularColor: {r: 6819.1504, g: 6848.996, b: 7962.867, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -635,6 +635,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1751989340717434746, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2030903746696530088, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
         type: 3}
       propertyPath: isPlayer
@@ -644,6 +649,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rotationSpeed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030903746696530090, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
+        type: 3}
+      propertyPath: maxAttackRange
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2030903746696530091, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
         type: 3}
@@ -714,6 +724,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807203666985177633, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
+        type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807203666985177633, guid: 7d9d694a9daa5ca4e9021d7af2ed5407,
+        type: 3}
+      propertyPath: rayCastHeightOffset
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9d694a9daa5ca4e9021d7af2ed5407, type: 3}

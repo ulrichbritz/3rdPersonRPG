@@ -108,10 +108,13 @@ MonoBehaviour:
   isPlayer: 0
   Strength: 0
   Vitality: 0
+  Intelligence: 10
   maxHP: 100
   currentHP: 0
   maxStamina: 0
   currentStamina: 0
+  maxMana: 0
+  currentMana: 0
   isDead: 0
   healthBar: {fileID: 2030903747042395416}
 --- !u!54 &2030903746696530089
@@ -169,6 +172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCollider: {fileID: 8448645609297683902}
   characterCollisionBlockerCollider: {fileID: 4272231604004038168}
+  rayCastHeightOffset: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!136 &8448645609297683902
 CapsuleCollider:
   m_ObjectHideFlags: 0
