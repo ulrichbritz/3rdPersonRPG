@@ -90,6 +90,11 @@ public class PlayerStats : CharacterStats
     {
         currentStamina -= amount;
 
+        if (currentStamina < 0)
+        {
+            currentStamina = 0;
+        }
+
         staminaBar.SetCurrentStamina(currentStamina);
     }
 
@@ -114,6 +119,11 @@ public class PlayerStats : CharacterStats
     public void DrainMana(float amount)
     {
         currentMana -= amount;
+
+        if (currentMana < 0)
+        {
+            currentMana = 0;
+        }
 
         manaBar.SetCurrentMana(currentMana);
     }
