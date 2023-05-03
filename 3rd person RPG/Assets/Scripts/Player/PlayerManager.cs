@@ -36,6 +36,7 @@ public class PlayerManager : CharacterManager
 
     private void Update()
     {
+        print(playerStats.currentMana);
         isUsingRightHand = anim.GetBool("isUsingRightHand");
         isUsingLeftHand = anim.GetBool("isUsingLeftHand");
 

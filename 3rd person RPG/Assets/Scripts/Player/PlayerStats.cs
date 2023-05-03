@@ -122,7 +122,7 @@ public class PlayerStats : CharacterStats
 
         if (currentMana < 0)
         {
-            currentMana = 0;
+            currentMana = 0.1f;
         }
 
         manaBar.SetCurrentMana(currentMana);
@@ -141,7 +141,7 @@ public class PlayerStats : CharacterStats
             if (currentMana < maxMana &&manaRegenTimer > 1f)
             {
                 currentMana += manaRegenAmount * Time.deltaTime;
-                manaBar.SetCurrentMana(Mathf.RoundToInt(currentStamina));
+                manaBar.SetCurrentMana(Mathf.RoundToInt(currentMana));
             }
         }
     }
