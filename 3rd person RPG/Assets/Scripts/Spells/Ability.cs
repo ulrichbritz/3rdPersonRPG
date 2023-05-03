@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Spells/Spell")]
 public class Ability : ScriptableObject
 {
+    public string abilityName;
+    public Sprite itemIcon;
+
     public GameObject abilityChannelFX;
     public GameObject abilityCastFX;
 
     public string abilityAnimation;
+
 
     [Header("AbilityType")]
     public AbilityType spellType;
@@ -22,6 +25,16 @@ public class Ability : ScriptableObject
     public bool requiresItem = false;
     public EquipmentSlotPiece requiredItemType;
     public WeaponType requiredWeaponType;
+
+    public virtual void AttemptToCastAbility(AnimatorManager animatorManager, PlayerStats playerStats)
+    {
+       // print("attempt to cast");
+    }
+
+    public virtual void SuccessfullyCastAbility(AnimatorManager animatorManager, PlayerStats playerStats)
+    {
+       //print("ability successful");
+    }
 
 }
 

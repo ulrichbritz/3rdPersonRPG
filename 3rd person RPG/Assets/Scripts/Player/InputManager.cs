@@ -307,7 +307,12 @@ public class InputManager : MonoBehaviour
         if (spell1Input)
         {
             spell1Input = false;
-            playerAttacker.HandleAbilityAction(0);
+
+            if(playerManager.isInteracting == false)
+            {
+                playerAttacker.HandleAbilityAction(0);
+            }
+            
         }
 
 

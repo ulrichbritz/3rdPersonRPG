@@ -12,8 +12,11 @@ public class PlayerAttacker : MonoBehaviour
     PlayerInventory playerInventory;
     EquipmentManager equipmentManager;
     SpellManager abilityManager;
+    PlayerStats playerStats;
 
     public string lastAttack;
+
+    private Ability abilityInUse;
 
     private void Awake()
     {
@@ -25,6 +28,7 @@ public class PlayerAttacker : MonoBehaviour
         playerInventory = GetComponentInParent<PlayerInventory>();
         equipmentManager = GetComponentInParent<EquipmentManager>();
         abilityManager = GetComponentInParent<SpellManager>();
+        playerStats = GetComponentInParent<PlayerStats>();
     }
 
     #region Input Actions
@@ -106,9 +110,11 @@ public class PlayerAttacker : MonoBehaviour
     {
         if (ability != null)
         {
+            abilityInUse = ability;
+
             if (ability.requiresItem == false)
             {
-                AttemptToCastAbility();
+                ability.AttemptToCastAbility(animatorManager, playerStats);
             }
             else if (ability.requiredItemType == EquipmentSlotPiece.Weapon)
             {
@@ -121,7 +127,7 @@ public class PlayerAttacker : MonoBehaviour
                     {
                         //check for focus point if needed
                         //attempt to cast spell
-                        AttemptToCastAbility();
+                        ability.AttemptToCastAbility(animatorManager, playerStats);
                     }
                     else
                     {
@@ -141,14 +147,9 @@ public class PlayerAttacker : MonoBehaviour
         }
     }
 
-    public void AttemptToCastAbility()
+    private void SuccessFullyCastSpell()
     {
-        print("attempt to cast");
-    }
-
-    public void SuccessfullyCastAbility(Ability ability)
-    {
-        print("ability successful");
+        abilityInUse.SuccessfullyCastAbility(animatorManager, playerStats);
     }
 
     #endregion

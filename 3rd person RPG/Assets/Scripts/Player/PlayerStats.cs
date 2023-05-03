@@ -38,6 +38,11 @@ public class PlayerStats : CharacterStats
         staminaBar.SetMaxStamina(maxStamina);
     }
 
+    public override void Heal(int healAmount)
+    {
+        base.Heal(healAmount);
+        healthBar.SetCurrentHealth(currentHP);
+    }
 
     public override void TakeDamage(int damage)
     {

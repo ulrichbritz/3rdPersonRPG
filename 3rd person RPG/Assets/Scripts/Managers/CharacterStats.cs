@@ -27,6 +27,16 @@ public class CharacterStats : MonoBehaviour
           
     }
 
+    public virtual void Heal(int healAmount)
+    {
+        currentHP += healAmount;
+
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+    }
+
     public virtual void TakeDamage(int damage)
     {
         currentHP -= damage;
