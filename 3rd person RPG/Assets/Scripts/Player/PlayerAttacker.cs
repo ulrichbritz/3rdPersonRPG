@@ -108,13 +108,21 @@ public class PlayerAttacker : MonoBehaviour
 
     private void PerformAbilityAction(Ability ability)
     {
+        bool canCast = false;
         if (ability != null)
         {
             abilityInUse = ability;
 
+            if (playerStats.currentMana < ability.manaCost)
+            {
+                canCast = false;
+                print($"Not enough mana to cast");
+                return;
+            }
+
             if (ability.requiresItem == false)
             {
-                ability.AttemptToCastAbility(animatorManager, playerStats);
+                canCast = true;
             }
             else if (ability.requiredItemType == EquipmentSlotPiece.Weapon)
             {
@@ -125,15 +133,12 @@ public class PlayerAttacker : MonoBehaviour
 
                     if (currentWeapon.weaponType == ability.requiredWeaponType)
                     {
-                        //check for focus point if needed
-                        //attempt to cast spell
-                        ability.AttemptToCastAbility(animatorManager, playerStats);
+                        canCast = true;
                     }
                     else
                     {
                         print($"Cant cast ability using {currentWeapon.weaponType} weapon");
                     }
-
                 }
                 else
                 {
@@ -145,10 +150,16 @@ public class PlayerAttacker : MonoBehaviour
                 //check if offhand is shield
             }
         }
+
+        if (canCast)
+        {
+            ability.AttemptToCastAbility(animatorManager, playerStats);
+        }
     }
 
     private void SuccessFullyCastSpell()
     {
+        playerStats.DrainMana(abilityInUse.manaCost);
         abilityInUse.SuccessfullyCastAbility(animatorManager, playerStats);
     }
 

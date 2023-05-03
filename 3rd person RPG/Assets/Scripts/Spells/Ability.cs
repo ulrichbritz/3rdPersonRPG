@@ -12,6 +12,9 @@ public class Ability : ScriptableObject
 
     public string abilityAnimation;
 
+    [Header("AbilityCost")]
+    public float manaCost;
+
 
     [Header("AbilityType")]
     public AbilityType spellType;

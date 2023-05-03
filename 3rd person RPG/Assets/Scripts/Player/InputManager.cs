@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     PlayerManager playerManager;
     UIManager uiManager;
     CameraManager cameraManager;
+    PlayerStats playerStats;
 
     public LayerMask leftClickHitLayerMask;
     public LayerMask rightClickHitLayerMask;
@@ -60,6 +61,7 @@ public class InputManager : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         uiManager = FindObjectOfType<UIManager>();
         cameraManager = FindAnyObjectByType<CameraManager>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void OnEnable()
@@ -141,6 +143,13 @@ public class InputManager : MonoBehaviour
 
     private void HandleSprintingInput()
     {
+        if (playerStats.currentStamina <= 0)
+        {
+            sprintInput = false;
+            playerLocomotion.isSprinting = false;
+            return;
+        }
+
         if (sprintInput && moveAmount > 0.5f)
         {
             playerLocomotion.isSprinting = true;

@@ -8,6 +8,7 @@ public class CharacterStats : MonoBehaviour
 
     public int Strength = 10;
     public int Vitality = 10;
+    public int Intelligence = 10;
 
 
     public int maxHP;
@@ -15,6 +16,9 @@ public class CharacterStats : MonoBehaviour
 
     public float maxStamina;
     public float currentStamina;
+
+    public float maxMana;
+    public float currentMana;
 
     public bool isDead;
 
@@ -52,6 +56,12 @@ public class CharacterStats : MonoBehaviour
     {
         maxStamina = Vitality * 10;
         return maxStamina;
+    }
+
+    public float SetMaxManaFromIntelligence()
+    {
+        maxMana = Intelligence * 10;
+        return maxMana;
     }
 
 }

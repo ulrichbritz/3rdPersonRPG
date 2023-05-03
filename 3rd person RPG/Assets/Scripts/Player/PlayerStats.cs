@@ -10,10 +10,14 @@ public class PlayerStats : CharacterStats
 
     public HealthBar healthBar;
     public StaminaBar staminaBar;
+    public ManaBar manaBar;
 
-    public float staminaRegenAmount = 30f;
+    public float staminaRegenAmount => Vitality;
     public float staminaSprintDrainAmount = 20f;
     private float staminaRegenTimer;
+
+    private float manaRegenAmount => Intelligence;
+    public float manaRegenTimer;
 
 
     public override void Awake()
@@ -36,6 +40,10 @@ public class PlayerStats : CharacterStats
         maxStamina = SetMaxStaminaFromVitality();
         currentStamina = maxStamina;
         staminaBar.SetMaxStamina(maxStamina);
+
+        maxMana = SetMaxManaFromIntelligence();
+        currentMana = maxMana;
+        manaBar.SetMaxMana(maxMana);
     }
 
     public override void Heal(int healAmount)
@@ -73,11 +81,8 @@ public class PlayerStats : CharacterStats
         {
             staminaRegenTimer = 0f;
 
-            if (currentStamina <= maxStamina)
-            {
-                currentStamina -= staminaSprintDrainAmount * Time.deltaTime;
-                staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
-            }
+            currentStamina -= staminaSprintDrainAmount * Time.deltaTime;
+            staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
         }
     }
 
@@ -102,6 +107,31 @@ public class PlayerStats : CharacterStats
             {
                 currentStamina += staminaRegenAmount * Time.deltaTime;
                 staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+            }
+        }
+    }
+
+    public void DrainMana(float amount)
+    {
+        currentMana -= amount;
+
+        manaBar.SetCurrentMana(currentMana);
+    }
+
+    public void RegenerateMana()
+    {
+        if (playerManager.isInteracting)
+        {
+            manaRegenTimer = 0;
+        }
+        else
+        {
+            manaRegenTimer += Time.deltaTime;
+
+            if (currentMana < maxMana &&manaRegenTimer > 1f)
+            {
+                currentMana += manaRegenAmount * Time.deltaTime;
+                manaBar.SetCurrentMana(Mathf.RoundToInt(currentStamina));
             }
         }
     }

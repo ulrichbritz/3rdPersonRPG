@@ -42,6 +42,7 @@ public class PlayerManager : CharacterManager
         inputManager.HandleAllInputs();
         CheckForInteractable();
         playerStats.RegenerateStamina();
+        playerStats.RegenerateMana();
     }
 
     private void FixedUpdate()

@@ -19,6 +19,7 @@ MonoBehaviour:
   abilityCastFX: {fileID: 1248336708593440101, guid: b012617ba7f835e40b0218bf24d09a34,
     type: 3}
   abilityAnimation: Healing_Ability_01
+  manaCost: 30
   spellType: 2
   spellElement: 0
   abilityDescription: Heals oneself for 30 hp.
