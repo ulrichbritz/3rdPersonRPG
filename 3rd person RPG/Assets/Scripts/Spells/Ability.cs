@@ -36,7 +36,7 @@ public class Ability : ScriptableObject
 
     public virtual void SuccessfullyCastAbility(AnimatorManager animatorManager, PlayerStats playerStats)
     {
-       //print("ability successful");
+        playerStats.DrainMana(manaCost);
     }
 
 }

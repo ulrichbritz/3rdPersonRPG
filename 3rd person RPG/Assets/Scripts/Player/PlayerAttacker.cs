@@ -159,7 +159,6 @@ public class PlayerAttacker : MonoBehaviour
 
     private void SuccessFullyCastSpell()
     {
-        playerStats.DrainMana(abilityInUse.manaCost);
         abilityInUse.SuccessfullyCastAbility(animatorManager, playerStats);
     }
 
