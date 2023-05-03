@@ -37,6 +37,7 @@ public class InputManager : MonoBehaviour
     public bool lockOnInput;
     public bool leftLockOn;
     public bool rightLockOn;
+    public bool spell1Input;
 
 
     public bool comboFlag;
@@ -89,6 +90,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerMovement.LockOnTargetLeft.performed += i => leftLockOn = true;
             playerControls.PlayerMovement.LockOnTargetRight.performed += i => rightLockOn = true;
 
+            playerControls.PlayerActions.Spell1.performed += i => spell1Input = true;
+
         }
 
         playerControls.Enable();
@@ -121,6 +124,7 @@ public class InputManager : MonoBehaviour
         HandleInventoryInput();
         HandleEquipmentInput();
         HandleLockOnInput();
+        HandleSpellOneInput();
     }
     private void HandleMovementInput()
     {
@@ -295,6 +299,17 @@ public class InputManager : MonoBehaviour
                 cameraManager.currentLockOnTarget = cameraManager.rightLockTarget;
             }
         }
+
+    }
+
+    void HandleSpellOneInput()
+    {
+        if (spell1Input)
+        {
+            spell1Input = false;
+            playerAttacker.HandleAbilityAction(0);
+        }
+
 
     }
 

@@ -11,6 +11,7 @@ public class PlayerAttacker : MonoBehaviour
     CameraManager cameraManager;
     PlayerInventory playerInventory;
     EquipmentManager equipmentManager;
+    SpellManager abilityManager;
 
     public string lastAttack;
 
@@ -23,12 +24,12 @@ public class PlayerAttacker : MonoBehaviour
         cameraManager = FindAnyObjectByType<CameraManager>();
         playerInventory = GetComponentInParent<PlayerInventory>();
         equipmentManager = GetComponentInParent<EquipmentManager>();
+        abilityManager = GetComponentInParent<SpellManager>();
     }
 
     #region Input Actions
     public void HandleAttackAction()
     {
-        print(cameraManager.currentLockOnTarget);
         if (cameraManager.currentLockOnTarget == null)
         {
             Vector3 direction;
@@ -70,7 +71,8 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleAbilityAction(int slotIndex)
     {
-        PerformAbilityAction(null);
+        Ability ability = abilityManager.currentAbilities[slotIndex];
+        PerformAbilityAction(ability);
     }
 
     #endregion
@@ -102,10 +104,51 @@ public class PlayerAttacker : MonoBehaviour
 
     private void PerformAbilityAction(Ability ability)
     {
-        if (ability.spellType == AbilityType.Damage)
+        if (ability != null)
         {
-            
+            if (ability.requiresItem == false)
+            {
+                AttemptToCastAbility();
+            }
+            else if (ability.requiredItemType == EquipmentSlotPiece.Weapon)
+            {
+                WeaponItem currentWeapon;
+                if (equipmentManager.currentEquipment[6] != null)
+                {
+                    currentWeapon = equipmentManager.currentEquipment[6] as WeaponItem;
+
+                    if (currentWeapon.weaponType == ability.requiredWeaponType)
+                    {
+                        //check for focus point if needed
+                        //attempt to cast spell
+                        AttemptToCastAbility();
+                    }
+                    else
+                    {
+                        print($"Cant cast ability using {currentWeapon.weaponType} weapon");
+                    }
+
+                }
+                else
+                {
+                    print($"Ability requires a {ability.requiredWeaponType} weapon");
+                }
+            }
+            else if (ability.requiredItemType == EquipmentSlotPiece.OffHand)
+            {
+                //check if offhand is shield
+            }
         }
+    }
+
+    public void AttemptToCastAbility()
+    {
+        print("attempt to cast");
+    }
+
+    public void SuccessfullyCastAbility(Ability ability)
+    {
+        print("ability successful");
     }
 
     #endregion

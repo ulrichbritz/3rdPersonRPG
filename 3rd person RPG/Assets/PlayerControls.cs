@@ -349,6 +349,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell1"",
+                    ""type"": ""Button"",
+                    ""id"": ""eef175e5-6334-4d81-85a7-795e2177bae2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -472,6 +481,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""RightClickLockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a47c6e9a-d315-46ad-8969-7486bca20a76"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -495,6 +515,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Equipment = m_PlayerActions.FindAction("Equipment", throwIfNotFound: true);
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
         m_PlayerActions_RightClickLockOn = m_PlayerActions.FindAction("RightClickLockOn", throwIfNotFound: true);
+        m_PlayerActions_Spell1 = m_PlayerActions.FindAction("Spell1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -635,6 +656,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Equipment;
     private readonly InputAction m_PlayerActions_LockOn;
     private readonly InputAction m_PlayerActions_RightClickLockOn;
+    private readonly InputAction m_PlayerActions_Spell1;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -648,6 +670,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Equipment => m_Wrapper.m_PlayerActions_Equipment;
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputAction @RightClickLockOn => m_Wrapper.m_PlayerActions_RightClickLockOn;
+        public InputAction @Spell1 => m_Wrapper.m_PlayerActions_Spell1;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -684,6 +707,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RightClickLockOn.started += instance.OnRightClickLockOn;
             @RightClickLockOn.performed += instance.OnRightClickLockOn;
             @RightClickLockOn.canceled += instance.OnRightClickLockOn;
+            @Spell1.started += instance.OnSpell1;
+            @Spell1.performed += instance.OnSpell1;
+            @Spell1.canceled += instance.OnSpell1;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -715,6 +741,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RightClickLockOn.started -= instance.OnRightClickLockOn;
             @RightClickLockOn.performed -= instance.OnRightClickLockOn;
             @RightClickLockOn.canceled -= instance.OnRightClickLockOn;
+            @Spell1.started -= instance.OnSpell1;
+            @Spell1.performed -= instance.OnSpell1;
+            @Spell1.canceled -= instance.OnSpell1;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -750,5 +779,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnEquipment(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnRightClickLockOn(InputAction.CallbackContext context);
+        void OnSpell1(InputAction.CallbackContext context);
     }
 }

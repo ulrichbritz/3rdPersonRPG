@@ -25,7 +25,7 @@ public class SpellManager : MonoBehaviour
 
     private void Start()
     {
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlotPiece)).Length;
-        currentAbilities = new Ability[numSlots];
+        //int numSlots = System.Enum.GetNames(typeof(EquipmentSlotPiece)).Length;
+        //currentAbilities = new Ability[numSlots];
     }
 }

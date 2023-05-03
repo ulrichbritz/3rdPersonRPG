@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+[CreateAssetMenu(menuName = "Spells/Spell")]
+public class Ability : ScriptableObject
 {
     public GameObject abilityChannelFX;
     public GameObject abilityCastFX;
@@ -18,18 +19,10 @@ public class Ability : MonoBehaviour
     public string abilityDescription;
 
     [Header("Ability Requirements")]
+    public bool requiresItem = false;
     public EquipmentSlotPiece requiredItemType;
     public WeaponType requiredWeaponType;
 
-    public virtual void AttemptToCastAbility()
-    {
-        print("attempt to cast");
-    }
-
-    public virtual void SuccessfullyCastAbility(Ability ability)
-    {
-        print("ability successful");
-    }
 }
 
 public enum AbilityType { Damage, Buff, Restoration}
