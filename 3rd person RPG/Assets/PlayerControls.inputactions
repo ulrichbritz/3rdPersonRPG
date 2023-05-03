@@ -284,6 +284,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CriticalAttack",
+                    "type": "Button",
+                    "id": "e85ebe27-b627-4f81-81a8-08c4db6ebb54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "fc65222b-75a0-4ae4-9979-db8670c5ccd0",
@@ -468,6 +477,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Spell1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19bad910-9080-4c6a-9774-4c19cfd66fe6",
+                    "path": "<Keyboard>/f",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CriticalAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

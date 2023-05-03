@@ -306,6 +306,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""CriticalAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""e85ebe27-b627-4f81-81a8-08c4db6ebb54"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""fc65222b-75a0-4ae4-9979-db8670c5ccd0"",
@@ -492,6 +501,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Spell1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19bad910-9080-4c6a-9774-4c19cfd66fe6"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CriticalAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -510,6 +530,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerActions_LightAttack = m_PlayerActions.FindAction("LightAttack", throwIfNotFound: true);
+        m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("CriticalAttack", throwIfNotFound: true);
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
         m_PlayerActions_Equipment = m_PlayerActions.FindAction("Equipment", throwIfNotFound: true);
@@ -651,6 +672,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Dodge;
     private readonly InputAction m_PlayerActions_LightAttack;
+    private readonly InputAction m_PlayerActions_CriticalAttack;
     private readonly InputAction m_PlayerActions_Interact;
     private readonly InputAction m_PlayerActions_Inventory;
     private readonly InputAction m_PlayerActions_Equipment;
@@ -665,6 +687,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
         public InputAction @LightAttack => m_Wrapper.m_PlayerActions_LightAttack;
+        public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
         public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
         public InputAction @Equipment => m_Wrapper.m_PlayerActions_Equipment;
@@ -692,6 +715,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LightAttack.started += instance.OnLightAttack;
             @LightAttack.performed += instance.OnLightAttack;
             @LightAttack.canceled += instance.OnLightAttack;
+            @CriticalAttack.started += instance.OnCriticalAttack;
+            @CriticalAttack.performed += instance.OnCriticalAttack;
+            @CriticalAttack.canceled += instance.OnCriticalAttack;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -726,6 +752,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LightAttack.started -= instance.OnLightAttack;
             @LightAttack.performed -= instance.OnLightAttack;
             @LightAttack.canceled -= instance.OnLightAttack;
+            @CriticalAttack.started -= instance.OnCriticalAttack;
+            @CriticalAttack.performed -= instance.OnCriticalAttack;
+            @CriticalAttack.canceled -= instance.OnCriticalAttack;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -774,6 +803,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnLightAttack(InputAction.CallbackContext context);
+        void OnCriticalAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnEquipment(InputAction.CallbackContext context);
